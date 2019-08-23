@@ -33,10 +33,10 @@ public class Gracz {
 				sumapunktów += 11;
 				
 			} else {
-				sumapunktów+= punktykarty;
+				sumapunktów += punktykarty;
 			}
 			
-			while (sumapunktów > 21 && iloœæasów == 0) {
+			while (sumapunktów > 21 && iloœæasów > 0) {
 				sumapunktów -= 10;
 				iloœæasów --;
 				
@@ -46,33 +46,37 @@ public class Gracz {
 		return sumapunktów;
 	}
 	
-	
-	public void printHand (boolean showFirstHand) {
-		
-		System.out.print(imiê + ":");
-		System.out.println(getHandText(showFirstHand));
-		
-		if (showFirstHand) {
-			System.out.println("Punkty: [" + getsumarêki() + "] \n");
-		} else {
-			System.out.println("Punkty: [?] \n");
-		}
-	}
-
-	
-	public String getHandText (boolean showFirstHand) {
+	public String getCardsText (boolean showFirstHand) {
 		StringBuilder sb = new StringBuilder();
 		
 		for (int i = 0; i < rêka.size(); i++) {
 			
 			if (i == 0 && !showFirstHand) {
-				sb.append("\n[Ukryta]");
+				sb.append("<br>[Ukryta]");
 			} else {
-				sb.append("\n" + rêka.get(i).toString());
+				sb.append("<br>" + rêka.get(i).toString());
 			}
 		}
 		
 		return sb.toString();
+	}
+	
+	public String getCardsOnHand(boolean showFirstHand) {
+		
+		StringBuilder sb = new StringBuilder();
+		sb.append("<html>");
+		sb.append(imiê + ":<br>");
+		sb.append(getCardsText(showFirstHand) + "<br>");
+		
+		if (showFirstHand) {
+			sb.append("Punkty: [" + getsumarêki() + "] <br>");
+		} else {
+			sb.append("Punkty: [?] <br>");
+		}
+		
+		sb.append("</html>");
+		return sb.toString();
+	
 	}
 	
 	public boolean checkIfBusted() {
@@ -82,6 +86,8 @@ public class Gracz {
 		} {
 			return true;
 		}
+	
+		
 	}
 }
 

@@ -30,9 +30,6 @@ public class Game {
 		
 		System.out.println();
 		
-		gracz.printHand(true);
-		krupier.printHand(false);
-		
 		boolean graczinGame = true;
 		boolean krupierinGame = true;
 		String answer;
@@ -50,7 +47,6 @@ public class Game {
 					
 					gracz.addKartatorêka(talia.wezjednakarte());
 					graczinGame = !gracz.checkIfBusted();
-					gracz.printHand(true);
 				} else {
 					
 					System.out.println("\nNie dobierasz karty\n");
@@ -67,7 +63,6 @@ public class Game {
 					System.out.println("\nKrupier dobiera kartê \n");
 					krupier.addKartatorêka(talia.wezjednakarte());
 					krupierinGame = !krupier.checkIfBusted();
-					krupier.printHand(false);
 					
 				} else {
 					System.out.println("\nKrupier nie dobiera karty \n");
@@ -81,9 +76,6 @@ public class Game {
 		scanner.close();
 		
 		System.out.println("== Koniec gry ==");
-		
-		gracz.printHand(true);
-		krupier.printHand(true);
 		
 		int sumagracza = gracz.getsumarêki();
 		int sumakrupiera = krupier.getsumarêki();
